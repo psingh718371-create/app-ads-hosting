@@ -28,13 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 messages.scrollTop = messages.scrollHeight;
                 return;
             }
-
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: { text } })
-                });
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: text }] }] })
+    });
+
+    const data = await response.json();
+    const aiResponse = data.candidates[0].content.parts[0].text;
+    messages.innerHTML += `<div><b>AI:</b> ${aiResponse}</div>`;
+}
+
+            try 
                 const data = await response.json();
                 // Try a few possible response shapes, fall back to stringified data
                 let aiResponse = '';
