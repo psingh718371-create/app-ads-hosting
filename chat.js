@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check for API key placeholder and avoid leaking keys
             const apiKey = 'YOUR_API_KEY_HERE';
-            if (!apiKey || apiKey === 'YOUR_API_KEY_HERE') {
+            if (!apiKey || apiKey === 'AIzaSyBYdQrcpGl9wsa_S2iQmTsnNt99L3Pv-qU') {
                 messages.innerHTML += `<div><b>AI:</b> API key सेट नहीं है — कृपया chat.js में अपनी API key जोड़ें।</div>`;
                 messages.scrollTop = messages.scrollHeight;
                 return;
