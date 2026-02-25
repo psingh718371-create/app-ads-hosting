@@ -19,10 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
             userInput.value = '';
             messages.scrollTop = messages.scrollHeight;
 
-            // Check for API key placeholder and avoid leaking keys
-            const apiKey = 'YOUR_API_KEY_HERE';
-            if (!apiKey || apiKey === 'AIzaSyBYdQrcpGl9wsa_S2iQmTsnNt99L3Pv-qU') {
-                messages.innerHTML += `<div><b>AI:</b> API key सेट नहीं है — कृपया chat.js में अपनी API key जोड़ें।</div>`;
+            // Read API key from a data attribute on the chat container to avoid hardcoding
+            // Add `data-api-key="YOUR_KEY"` to the chat box element in your HTML, or
+            // use a server-side proxy instead of exposing the key in client JS.
+            const apiKey = chatBox.dataset.apiKey || '';
+            if (!apiKey) {
+                messages.innerHTML += `<div><b>AI:</b> API key सेट नहीं है — कृपया chat बॉक्स के HTML में <code>data-api-key</code> attribute में अपनी API key जोड़ें या सर्वर प्रॉक्सी का उपयोग करें。</div>`;
                 messages.scrollTop = messages.scrollHeight;
                 return;
             }
