@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyBvdQrpcGl9wsa_S2IQmTsnNt99L3Pv-qU';
+const apiKey = 'AIzaSyBYdQrcpGl9wsa_S2iQmTsnNt99L3Pv-qU';
 
 document.addEventListener('DOMContentLoaded', () => {
     const chatBtn = document.getElementById('chat-btn');
